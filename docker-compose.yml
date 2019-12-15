@@ -1,0 +1,19 @@
+version: '3.4'
+
+rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=rabbitmq
+      - RABBITMQ_DEFAULT_VHOST=/
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - ${APPDATA}/DockerVolumes/rabbitmq/mnesia:/var/lib/rabbitmq/mnesia
+    ports:
+      - 5671:5671
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - aarim-dev
