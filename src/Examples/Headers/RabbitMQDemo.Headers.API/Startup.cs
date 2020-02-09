@@ -22,7 +22,7 @@ namespace RabbitMQDemo.Headers.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSharpRabbit();
+            services.AddSharpRabbit(Configuration.GetConnectionString("RabbitMQ"));
             services.AddHostedService<FirstHeaderConsumer>();
             services.AddHostedService<SecondHeaderConsumer>();
         }
