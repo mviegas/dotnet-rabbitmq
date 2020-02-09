@@ -7,19 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1511910-189
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D70037D5-8554-47CF-8E34-FB0871E67F46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MateusViegas.Net.RabbitMQ.Core", "src\Core\MateusViegas.Net.RabbitMQ.Core\MateusViegas.Net.RabbitMQ.Core.csproj", "{3C4C6CB4-AA58-4492-A05A-54BF7094B0BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MateusViegas.Net.RabbitMQ.Core", "src\Core\MateusViegas.Net.RabbitMQ.Core\MateusViegas.Net.RabbitMQ.Core.csproj", "{3C4C6CB4-AA58-4492-A05A-54BF7094B0BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{6BDA5C5A-8A3B-48F2-9696-BAC3EE7C82C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic", "Basic", "{FAB6F737-B17C-47DF-801D-93CB2F8835E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQDemo.Consumer", "src\Examples\Basic\RabbitMQDemo.Basic.Consumer\RabbitMQDemo.Consumer.csproj", "{83940171-32EB-429A-987A-77D7D3415E35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQDemo.Basic.Consumer", "src\Examples\Basic\RabbitMQDemo.Basic.Consumer\RabbitMQDemo.Basic.Consumer.csproj", "{83940171-32EB-429A-987A-77D7D3415E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQDemo.Publisher", "src\Examples\Basic\RabbitMQDemo.Basic.Publisher\RabbitMQDemo.Publisher.csproj", "{2671CDC9-13FA-42CC-BB00-664D5650AD5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQDemo.Basic.Publisher", "src\Examples\Basic\RabbitMQDemo.Basic.Publisher\RabbitMQDemo.Basic.Publisher.csproj", "{2671CDC9-13FA-42CC-BB00-664D5650AD5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Headers", "Headers", "{D423A7B9-969C-4010-8A59-0EAEA8103980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQDemo.API", "src\Examples\Headers\RabbitMQDemo.Headers.API\RabbitMQDemo.API.csproj", "{9CED1183-177A-40F8-AFEE-9B37C0B34061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQDemo.Headers.API", "src\Examples\Headers\RabbitMQDemo.Headers.API\RabbitMQDemo.Headers.API.csproj", "{9CED1183-177A-40F8-AFEE-9B37C0B34061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,9 +83,6 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8B3B9082-02E3-490C-A625-05D55129FF20}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D70037D5-8554-47CF-8E34-FB0871E67F46} = {A1511910-1897-430E-A0DB-3944ED591AF0}
 		{3C4C6CB4-AA58-4492-A05A-54BF7094B0BE} = {D70037D5-8554-47CF-8E34-FB0871E67F46}
@@ -95,5 +92,8 @@ Global
 		{2671CDC9-13FA-42CC-BB00-664D5650AD5C} = {FAB6F737-B17C-47DF-801D-93CB2F8835E0}
 		{D423A7B9-969C-4010-8A59-0EAEA8103980} = {6BDA5C5A-8A3B-48F2-9696-BAC3EE7C82C5}
 		{9CED1183-177A-40F8-AFEE-9B37C0B34061} = {D423A7B9-969C-4010-8A59-0EAEA8103980}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B3B9082-02E3-490C-A625-05D55129FF20}
 	EndGlobalSection
 EndGlobal
