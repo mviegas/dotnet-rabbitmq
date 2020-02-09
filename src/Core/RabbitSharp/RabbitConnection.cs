@@ -14,9 +14,9 @@ namespace SharpRabbit
         private bool _disposed;
         private readonly object _lock = new object();
 
-        public RabbitConnection(ILoggerFactory loggerFactory, IConnectionFactory connectionFactory)
+        public RabbitConnection(ILogger<RabbitConnection> logger, IConnectionFactory connectionFactory)
         {
-            _logger = loggerFactory.CreateLogger<RabbitConnection>();
+            _logger = logger;
             _connectionFactory = connectionFactory;
             _disposed = false;
         }
@@ -51,14 +51,14 @@ namespace SharpRabbit
             }
         }
 
-        protected void OnConnectionBlocked(object sender, global::RabbitMQ.Client.Events.ConnectionBlockedEventArgs e)
+        protected internal void OnConnectionBlocked(object sender, global::RabbitMQ.Client.Events.ConnectionBlockedEventArgs e)
         {
             _logger.LogError($"The connection was blocked for the following reason: {e.Reason}. Trying to reconnect");
             
             TryConnect();
         }
 
-        protected void OnConnectionShutdown(object sender, ShutdownEventArgs e)
+        protected internal void OnConnectionShutdown(object sender, ShutdownEventArgs e)
         {
             switch(e.Initiator)
             {
@@ -103,8 +103,8 @@ namespace SharpRabbit
 
             try
             {
-                _connection.Close();
-                _connection.Dispose();
+                _connection?.Close();
+                _connection?.Dispose();
                 _disposed = true;
 
                 _logger.LogDebug("Connection successfully disposed");

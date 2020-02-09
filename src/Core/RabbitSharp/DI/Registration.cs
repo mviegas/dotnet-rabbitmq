@@ -10,10 +10,10 @@ namespace SharpRabbit
         {
             owner.AddSingleton<IRabbitConnection>(serviceProvider =>
             {
-                var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+                var logger = serviceProvider.GetRequiredService<ILogger<RabbitConnection>>();
 
                 return new RabbitConnection(
-                    loggerFactory,
+                    logger,
                     connectionFactory: new ConnectionFactory()
                     {
                         Endpoint = new AmqpTcpEndpoint(connectionString)
