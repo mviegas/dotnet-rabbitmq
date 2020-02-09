@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\MateusViegas.Net.RabbitMQ.Core\MateusViegas.Net.RabbitMQ.Core.csproj" />
+    <ProjectReference Include="..\..\..\Core\MateusViegas.Net.RabbitMQ.Core\MateusViegas.Net.RabbitMQ.Core.csproj" />
   </ItemGroup>
-
-
+  
 </Project>
