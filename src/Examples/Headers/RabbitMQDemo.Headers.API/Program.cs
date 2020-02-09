@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace RabbitMQDemo.API
+namespace RabbitMQDemo.Headers.API
 {
     public class Program
     {

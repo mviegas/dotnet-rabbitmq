@@ -1,36 +1,33 @@
-using MateusViegas.Net.RabbitMQ.Core;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using SharpRabbit;
 using System;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RabbitMQDemo.API.Services
+namespace RabbitMQDemo.Headers.API.Services
 {
     public class FirstHeaderConsumer : BackgroundService
     {
         private const string Queue = "firstQueue";
         private readonly ILogger<FirstHeaderConsumer> _logger;
         private readonly ILoggerFactory _loggerFactory;
+        private readonly IRabbitConnection _rabbitConnection;
 
-        public FirstHeaderConsumer(ILoggerFactory loggerFactory)
+        public FirstHeaderConsumer(ILoggerFactory loggerFactory,
+            IRabbitConnection rabbitConnection)
         {
             _loggerFactory = loggerFactory;
             _logger = loggerFactory.CreateLogger<FirstHeaderConsumer>();
+            _rabbitConnection = rabbitConnection;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var connection = new RabbitConnection(
-                _loggerFactory,
-                new ConnectionFactory()
-                {
-                });
-
-            using (var channel = connection.CreateModel())
+            using (var channel = _rabbitConnection.CreateModel())
             {
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (sender, eventArgs) =>
@@ -62,7 +59,7 @@ namespace RabbitMQDemo.API.Services
                 }
             }
 
-            connection.Dispose();
+            _rabbitConnection.Dispose();
         }
     }
 }

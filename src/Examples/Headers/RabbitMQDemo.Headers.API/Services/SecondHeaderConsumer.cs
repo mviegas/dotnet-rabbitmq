@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using SharpRabbit;
+using System;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace RabbitMQDemo.Headers.Services
 {
@@ -14,18 +14,18 @@ namespace RabbitMQDemo.Headers.Services
     {
         private const string Queue = "secondQueue";
         private readonly ILogger<SecondHeaderConsumer> _logger;
+        private readonly IRabbitConnection _rabbitConnection;
 
-        public SecondHeaderConsumer(ILoggerFactory loggerFactory)
+        public SecondHeaderConsumer(ILoggerFactory loggerFactory,
+            IRabbitConnection rabbitConnection)
         {
             _logger = loggerFactory.CreateLogger<SecondHeaderConsumer>();
+            _rabbitConnection = rabbitConnection;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var connectionFactory = new ConnectionFactory();
-
-            using var connection = connectionFactory.CreateConnection();
-            using (var channel = connection.CreateModel())
+            using (var channel = _rabbitConnection.CreateModel())
             {
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (sender, eventArgs) =>
@@ -57,7 +57,7 @@ namespace RabbitMQDemo.Headers.Services
                 }
             }
 
-            connection.Dispose();   
+            _rabbitConnection.Dispose();   
         }
     }
 }

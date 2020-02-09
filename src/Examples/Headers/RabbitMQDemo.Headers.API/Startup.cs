@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RabbitMQDemo.API.Services;
+using RabbitMQDemo.Headers.API.Services;
 using RabbitMQDemo.Headers.Services;
+using SharpRabbit;
 
-namespace RabbitMQDemo.API
+namespace RabbitMQDemo.Headers.API
 {
     public class Startup
     {
@@ -21,6 +22,7 @@ namespace RabbitMQDemo.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSharpRabbit();
             services.AddHostedService<FirstHeaderConsumer>();
             services.AddHostedService<SecondHeaderConsumer>();
         }

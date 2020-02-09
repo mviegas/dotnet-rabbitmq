@@ -4,7 +4,7 @@ using RabbitMQ.Client;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RabbitMQDemo.API.Controllers
+namespace RabbitMQDemo.Headers.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

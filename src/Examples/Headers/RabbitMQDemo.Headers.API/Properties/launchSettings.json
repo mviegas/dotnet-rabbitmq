@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "RabbitMQDemo.API": {
+    "RabbitMQDemo.Headers.API": {
       "commandName": "Project",
       "launchBrowser": false,
       "launchUrl": "publisher",
