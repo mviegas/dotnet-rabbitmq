@@ -22,12 +22,12 @@ namespace SharpRabbit
         }
 
         private IConnection _connection;
-        private bool _isConnected => _connection?.IsOpen == true && !_disposed;
+        public bool IsConnected => _connection?.IsOpen == true && !_disposed;
 
-        public void TryConnect()
+        public bool TryConnect()
         {
-            if (_isConnected)
-                return;
+            if (IsConnected)
+                return true;
 
             var policy = Policy
                 .Handle<BrokerUnreachableException>()
@@ -49,6 +49,8 @@ namespace SharpRabbit
             {
                 _logger.LogCritical(ex, "There was an error connecting to the specified broker, please check the error logs");
             }
+
+            return IsConnected;
         }
 
         protected internal void OnConnectionBlocked(object sender, global::RabbitMQ.Client.Events.ConnectionBlockedEventArgs e)
@@ -84,7 +86,7 @@ namespace SharpRabbit
             {
                 TryConnect();
 
-                if (_isConnected)
+                if (IsConnected)
                     return _connection.CreateModel();
                 else
                     throw new BrokerUnreachableException(new Exception("No connection was stablished, therefore no Model was created"));

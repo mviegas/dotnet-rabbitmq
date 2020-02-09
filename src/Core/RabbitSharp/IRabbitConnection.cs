@@ -5,7 +5,8 @@ namespace SharpRabbit
 {
     public interface IRabbitConnection : IDisposable
     {
-        void TryConnect();
+        bool IsConnected { get; }
+        bool TryConnect();
         IModel CreateModel();
     }
 }
